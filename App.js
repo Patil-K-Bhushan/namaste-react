@@ -1,64 +1,68 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 
-// Create a Nested header Element using React.createElement(h1,h2,h3 inside a div with class “title”)
 
-const HeaderElement =React.createElement("div",{className:"title"},[
-    React.createElement("h1",{},"This is H1 tag"),
-    React.createElement("h2",{},"This is H2 Tag"),
-    React.createElement("h3",{},"This is H3 Tag")
-]);
-
-//Create the same element using JSX
-
-const jsxHeader =(
-    <div className="title">
-        <h1>Heading 1</h1>
-        <h2>Heading 2</h2>
-        <h3>Heading 3</h3>
-    </div>
-);
-
-//Create a functional component of the same with JSX
-
-const FunctionalHeader = () =>(
-    <div className="title">
-        <h1>Heading 1</h1>
-        <h2>Heading 2</h2>
-        <h3>Heading 3</h3>
-    </div>
-);
-
-//Pass attributes into the tag in JSX
-
-const Title = ()=>{
-    <div className="title">
-        <h1 style={{color:"red"}}>Heading 1</h1>
-        <h2>Heading 2</h2>
-        <h3>Heading 3</h3>
-    </div>
+const Header = ()=>{
+    return(
+        <div className="header">
+            <div className="logo-container">
+                <img
+                    className="logo"
+                    src="https://w7.pngwing.com/pngs/664/210/png-transparent-uber-eats-muncheez-delivery-online-food-ordering-food-delivery-food-logo-uber-eats.png"
+                />
+                <div className="nav-items">
+                    <ul>
+                        <li>Home</li>
+                        <li>About Us</li>
+                        <li>Contact Us</li>
+                        <li>Cart</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    );
 }
 
-//Composition of Component(Add a component inside another)
-
-const Headings = ()=>{
+const RestaurantCard = ()=>{
     return(
-        <div className="Headings">
-            <h1>Heading 1</h1>
-            <h2>Heading 2</h2>
-            <h3>Heading 3</h3>
+        <div className="res-card">
+            <img src="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/RX_THUMBNAIL/IMAGES/VENDOR/2025/6/9/a1e023e4-bdf3-4bcb-b4d9-2498ba52528e_1003414.JPG" />
+            <h3>Pizza hut</h3>
+            <h4>Pizza, Italian</h4>
+            <h4>4.4</h4>
+            <h4>38 minutes</h4>
         </div>
     )
 }
 
-const Page = ()=>{
-    <div className="title">
-        <Headings />
-        <p>This is Page</p>
-    </div>
+const Body = ()=> {
+    return(
+        <div className="body">
+            <div className="search">Search</div>
+            <div className="res-container">
+                <RestaurantCard/>
+                <RestaurantCard/>
+                <RestaurantCard/>
+                <RestaurantCard/>
+                <RestaurantCard/>
+                <RestaurantCard/>
+                <RestaurantCard/>
+                <RestaurantCard/>
+                <RestaurantCard/>
+                <RestaurantCard/>
+            </div>
+        </div>
+    )
 }
 
+const AppLayout = ()=>{
+    return(
+        <div className="App">
+            <Header />
+            <Body />
+        </div>
+    );
+}
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
-
-root.render(HeaderElement);
+root.render(<AppLayout />);
